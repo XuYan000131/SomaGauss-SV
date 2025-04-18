@@ -6,8 +6,6 @@ import pandas as pd
 
 
 def Cat_RepeatMasked_IN_OR_NOT_IN_funcatin(sample_name):
-    # path_vcf = '/NAS/wg_liuxy/01.Pancaner/Iris_test/{OSCC5}/{OSCC5}_iris_out.vcf'.format(OSCC5=sample_name)
-    ## DEL 不用构建CS序列之间在筛选abnormal的里面去找
     csv_path_INS = os.path.join(ms_dir,sample_name,'sniffles2','{sampel_name}_T_N_merge_minimap2.2.26_sniffles_v2.somaticSV.NS0_TS3.INS.bed'.format(sampel_name=sample_name))
     csv_path_DUP = os.path.join(ms_dir,sample_name,'sniffles2','{sampel_name}_T_N_merge_minimap2.2.26_sniffles_v2.somaticSV.NS0_TS3.DUP.bed'.format(sampel_name=sample_name))
     csv_path_DUP_df = pd.read_csv(csv_path_DUP,sep='\t',header=None)
@@ -33,8 +31,8 @@ def Cat_RepeatMasked_IN_OR_NOT_IN_funcatin(sample_name):
     cmd_bedtools_NO_inter = "{bedtools} intersect -a {csv_path} -b {Repeat_masked_bed} -wa -wb -v > {NO_Intersect_bed_path}".format(
         bedtools=bedtools, csv_path=csv_path, Repeat_masked_bed=Repeat_masked_bed,
         NO_Intersect_bed_path=NO_Intersect_bed_path)
-    os.system(cmd_bedtools_inter)  # 判断是否和repeat有交集
-    os.system(cmd_bedtools_NO_inter)  # 判断是否和repeat有交集
+    os.system(cmd_bedtools_inter)  # 
+    os.system(cmd_bedtools_NO_inter)  # 
     ALL_Intersect_bed_path = os.path.join(work_dir_INS,'{sampel_name}_T_N_merge_minimap2.2.26_sniffles_v2.somaticSV_INS_and_DUP_all_UCSC_RepeatMasked.bed'.format(sampel_name=sample_name))
     os.system("cat {Intersect_bed_path} {NO_Intersect_bed_path} > {ALL_Intersect_bed_path}".format(Intersect_bed_path=Intersect_bed_path, NO_Intersect_bed_path=NO_Intersect_bed_path, ALL_Intersect_bed_path=ALL_Intersect_bed_path))
 
