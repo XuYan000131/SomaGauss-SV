@@ -31,7 +31,7 @@ del P
 print('Finish extracting the bam file for tumor')
 print('Start extracting bloods bam file')
 P = Pool(POOL_core)
-P.map(get_blood_bam, ParamList) #提取blood的bam文件 没有返回值
+P.map(get_blood_bam, ParamList) #Extracting the blood bam file returns no value.
 P.close()
 del P
 print('Finished extracting bloods bam file')
@@ -50,7 +50,7 @@ ComDf.to_csv(os.path.join(work_dir_000, '%s_GaussianMixture_Judgement.csv' % (sa
 ComDf = ComDf.sort_values(by=['chr', 'start'], ascending=True)
 ComDf_Ture = ComDf[ComDf['JUDGEMENT'] == 'Ture_somatic_DEL']
 ComDf_bed = ComDf_Ture[['chr', 'start', 'end', 'sv_id']]
-ComDf_bed.to_csv(os.path.join(work_dir_000, '%s_GaussianMixture_Judgement.bed' % (sample_name)), sep='\t', index=False,header=False)  ### 只提取判断为真的SV 情况
+ComDf_bed.to_csv(os.path.join(work_dir_000, '%s_GaussianMixture_Judgement.bed' % (sample_name)), sep='\t', index=False,header=False)  ### Extract only SV cases that are judged to be true
 os.system('''{bedtools} cluster -d 200 -i {bed}   > {bed_cluster}'''.format(bedtools=bedtools,bed =os.path.join(work_dir_000, '%s_GaussianMixture_Judgement.bed' % (sample_name)),
                                                                             bed_cluster=os.path.join(work_dir_000, '%s_GaussianMixture_Judgement_cluster.bed' % (sample_name))))
 
