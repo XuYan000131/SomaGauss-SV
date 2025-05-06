@@ -81,7 +81,7 @@ def change_vcf(path_vcf, work_dir,support_reads):
     vcfDf4.to_csv(vcf_path, index=False, header=False, sep='\t')
     bed_path = os.path.join(work_dir, os.path.basename(path_vcf).replace('.vcf', '.somaticSV.NS0_TS3.bed'))
     vcfDf5.to_csv(bed_path, index=False, header=False, sep='\t')
-    ######################################  分成bed格式查看
+    ######################################  View in bed format
     for SV_type in ['DEL','BND','INV','INS','DUP']:
         vcfDf5_SV_type = vcfDf5[vcfDf5['SVType'] == SV_type]
         bed_path_SV_type = os.path.join(work_dir, os.path.basename(path_vcf).replace('.vcf', '.somaticSV.NS0_TS3.{SV_type}.bed'.format(SV_type=SV_type)))
