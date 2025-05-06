@@ -84,7 +84,7 @@ vcfDf['SUPP_number'] = vcfDf.apply(lambda x:x['INFO'].split('SUPP=')[1].split(';
 vcfDf['ID'] = vcfDf.apply(lambda x:x['ID'].split('_')[1],axis =1)
 Jasmine_count[Sample] = vcfDf['SUPP_number'].value_counts()
 vcfDf_After_pon = vcfDf[vcfDf['SUPP_number'] == '1']
-reslut_bed_PON = os.path.join(Jasmine_dir, 'somatic.%s.reslut.AF.PON.20240712.bed' % (Sample))
+reslut_bed_PON = os.path.join(Jasmine_dir, 'somatic.%s.reslut.AF.PON.bed' % (Sample))
 reslut_vcf_PON_head_txt = reslut_vcf_PON.replace('.vcf','.txt')
 CMD_head = 'head -n 84 {reslut_vcf_PON} > {reslut_vcf_PON_head_txt}'.format(reslut_vcf_PON=reslut_vcf_PON,reslut_vcf_PON_head_txt=reslut_vcf_PON_head_txt)
 os.system(CMD_head)
@@ -95,5 +95,5 @@ CMD_cat = 'cat {reslut_vcf_PON_head_txt} {reslut_bed_PON} > {reslut_vcf_PON_2}'.
 os.system(CMD_cat)
 
 
-Jasmine_count.T.to_csv(os.path.join(ms_dir,'AF.PON.SV.number.count.20240712.txt'),sep='\t',header=True,index=True)
+Jasmine_count.T.to_csv(os.path.join(ms_dir,'AF.PON.SV.number.count.txt'),sep='\t',header=True,index=True)
 
