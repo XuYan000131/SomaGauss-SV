@@ -69,7 +69,7 @@ SomaGauss-SV/
 │   ├── function.py
 │   └── pipeline.py
 │
-└── 04.PON.and.Bulit.New.VCF/                # Post-processing and building new VCF
+└── 04.PON.and.Bulit.New.VCF/                # PON and building new VCF
 │   ├── config.py
 │   ├── function.py
 │   └── pipeline.py
