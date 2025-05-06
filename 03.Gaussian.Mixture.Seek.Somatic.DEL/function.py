@@ -266,12 +266,12 @@ def SelectK(x):
     else:
         min_components = 1
         max_components = 10
-    n_components = np.arange(min_components, max_components)  # 考虑的组数范围
+    n_components = np.arange(min_components, max_components)  #  Range of groups considered
     models = [GaussianMixture(n, covariance_type='full', random_state=0).fit(x) for n in n_components]
-    bics = [m.bic(x) for m in models]  # 计算每个模型的BIC值
+    bics = [m.bic(x) for m in models]  #Calculate the BIC value for each model
     # best_k = n_components[np.argmin(bics)]
-    best_gmm = models[np.argmin(bics)]  # 最佳的GMM模型
-    labels = best_gmm.predict(x)  # 聚类预测
+    best_gmm = models[np.argmin(bics)]  # Optimal GMM modeling
+    labels = best_gmm.predict(x)  # clustering prediction
     return (best_gmm, labels)
 
 
